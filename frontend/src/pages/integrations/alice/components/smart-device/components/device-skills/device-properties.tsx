@@ -317,6 +317,24 @@ export const DeviceProperties = observer(({
                       </div>
                     )}
                   </div>
+                  {property.parameters?.instance === 'motion' && (
+                    <div className="aliceDeviceSkills-gridRange">
+                      <div>
+                        <div className="aliceDeviceSkills-gridLabel">{t('alice.labels.min')}</div>
+                        <Input
+                          value={property.parameters?.motion?.min}
+                          type="number"
+                          isFullWidth
+                          onChangeEvent={(event) => {
+                            const val = properties.map((item, i) => i === key
+                            ? { ...item, parameters: { ...item.parameters, value } }
+                            : item);
+                            onPropertyChange(val);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
                 </>
               )}
               <div className="aliceDeviceSkills-deleteButton">
